@@ -582,33 +582,42 @@
 // ===== STATE =====
 const ADMIN_PASS = 'lapa2024';
 
-// ===== GOOGLE SHEETS =====
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzxULWNaBHzxj5EpG9dGJtOGSYRqd8feCZpJj7NTMAxEU5vJ-RR8Al5JXiow4ov11hZOQ/exec';
+// ===== TELEGRAM =====
+const TG_TOKEN = '8618319016:AAEv9qO-7ByNEmkphNqTz9yMBRxXWtrNkFo';
+const TG_CHAT = '470115899';
 
-async function sendToSheet(order) {
-  try {
-    await fetch(SHEET_URL, {
-      method: 'POST',
-      body: JSON.stringify(order),
-      headers: { 'Content-Type': 'application/json' }
-    });
-  } catch(e) { console.error('Sheet error', e); }
+async function sendToTelegram(order) {
+  const text = [
+    '🐾 *Новая заявка ЛапаКомфорт*',
+    '',
+    `👤 *Имя:* ${order.name}`,
+    `📞 *Телефон:* ${order.phone}`,
+    `${order.pet}`,
+    `📍 *Откуда:* ${order.from}`,
+    `📍 *Куда:* ${order.to}`,
+    order.date ? `📅 *Дата:* ${order.date} в ${order.time}` : '',
+    order.comment ? `💬 *Комментарий:* ${order.comment}` : '',
+    '',
+    `🕐 ${order.created}`
+  ].filter(Boolean).join('
+');
+
+  await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'Markdown' })
+  });
 }
 
+// Заявки хранятся локально + улетают в Telegram
+function getOrders() {
+  try { return JSON.parse(localStorage.getItem('lc_orders') || '[]'); } catch { return []; }
+}
+function saveOrders(orders) {
+  localStorage.setItem('lc_orders', JSON.stringify(orders));
+}
 async function loadFromSheet() {
-  try {
-    const res = await fetch(SHEET_URL);
-    const data = await res.json();
-    if (!data.ok || !data.rows || data.rows.length < 2) return [];
-    const rows = data.rows.slice(1); // skip header
-    return rows.map((r, i) => ({
-      id: i + 1,
-      created: r[0], name: r[1], phone: r[2], pet: r[3],
-      from: r[4], to: r[5], date: r[6], time: r[7],
-      comment: r[8], status: r[9] === 'Выполнена' ? 'done' : r[9] === 'Отменена' ? 'cancel' : 'new',
-      rowIndex: i + 2
-    })).reverse();
-  } catch(e) { return []; }
+  return getOrders();
 }
 
 // ===== NAVIGATION =====
@@ -676,7 +685,11 @@ function submitForm() {
   btn.textContent = 'Отправляем...';
   btn.disabled = true;
 
-  sendToSheet(order).then(() => {
+  const orders = getOrders();
+  orders.unshift(order);
+  saveOrders(orders);
+
+  sendToTelegram(order).finally(() => {
     btn.textContent = 'Отправить заявку →';
     btn.disabled = false;
     document.getElementById('form-wrap').style.display = 'none';
