@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ЛапаКомфорт — Зоотакси Иркутск</title>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://googleapis.com" rel="stylesheet">
 <style>
   :root {
     --bg: #0e0f0e;
@@ -62,10 +62,6 @@
   }
 
   .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* PAGES */
-  .page { display: none; }
-  .page.active { display: block; }
 
   /* HERO */
   .hero {
@@ -187,10 +183,6 @@
     border-color: var(--accent);
   }
 
-  select option { background: var(--surface); }
-
-  textarea { resize: none; min-height: 80px; }
-
   .pet-type-row {
     display: flex;
     gap: 10px;
@@ -247,521 +239,143 @@
     display: none;
     text-align: center;
     padding: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    max-width: 680px;
   }
 
   .success-msg .icon { font-size: 48px; margin-bottom: 16px; }
   .success-msg h3 { font-family: 'Unbounded', sans-serif; font-size: 20px; margin-bottom: 8px; }
   .success-msg p { color: var(--muted); }
-
-  /* ADMIN LOGIN */
-  .admin-wrap {
-    max-width: 400px;
-    margin: 80px auto;
-    padding: 0 20px;
-  }
-
-  .admin-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 40px;
-  }
-
-  .admin-card h2 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 20px;
-    margin-bottom: 6px;
-  }
-
-  .admin-card p { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
-
-  .login-btn {
-    width: 100%;
-    background: var(--accent);
-    color: #0e0f0e;
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 6px;
-    transition: background 0.2s;
-  }
-
-  .login-btn:hover { background: var(--accent2); }
-
-  .error-msg {
-    color: var(--danger);
-    font-size: 13px;
-    margin-top: 10px;
-    display: none;
-  }
-
-  /* CABINET */
-  .cabinet-wrap {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
-
-  .cabinet-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-  }
-
-  .cabinet-header h2 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 22px;
-  }
-
-  .logout-btn {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Golos Text', sans-serif;
-    font-size: 13px;
-    transition: all 0.2s;
-  }
-
-  .logout-btn:hover { border-color: var(--danger); color: var(--danger); }
-
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  .stat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 24px;
-  }
-
-  .stat-card .num {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--accent);
-  }
-
-  .stat-card .lbl { font-size: 13px; color: var(--muted); margin-top: 4px; }
-
-  .orders-list { display: flex; flex-direction: column; gap: 12px; }
-
-  .order-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 24px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 12px;
-    align-items: start;
-    animation: slideIn 0.3s ease;
-  }
-
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .order-name {
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 4px;
-  }
-
-  .order-meta {
-    font-size: 13px;
-    color: var(--muted);
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 6px;
-  }
-
-  .order-meta span { display: flex; align-items: center; gap: 4px; }
-
-  .order-comment {
-    font-size: 13px;
-    color: var(--muted);
-    font-style: italic;
-  }
-
-  .order-right { text-align: right; }
-
-  .order-time {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-
-  .status-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .status-new { background: rgba(184,224,74,0.15); color: var(--accent); }
-  .status-done { background: rgba(122,184,41,0.1); color: var(--accent2); }
-  .status-cancel { background: rgba(224,90,74,0.1); color: var(--danger); }
-
-  .delete-btn {
-    background: none;
-    border: none;
-    color: var(--border);
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 6px;
-    transition: color 0.2s;
-    display: block;
-    margin-left: auto;
-  }
-
-  .delete-btn:hover { color: var(--danger); }
-
-  .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--muted);
-  }
-
-  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
-
-  /* CHECKLIST PAGE */
-  /* MOBILE */
-  @media (max-width: 600px) {
-    nav { padding: 16px 20px; }
-    .hero { padding: 40px 20px 40px; }
-    .form-wrap { padding: 24px 20px; }
-    .form-grid { grid-template-columns: 1fr; }
-    h1 { letter-spacing: -1px; }
-    .stats-row { grid-template-columns: 1fr; }
-    .order-card { grid-template-columns: 1fr; }
-    .order-right { text-align: left; display: flex; gap: 10px; align-items: center; }
-  }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo" onclick="showPage('landing')" style="cursor:pointer;">Лапа<span>Комфорт</span></div>
-  <div style="display:flex;gap:10px;">
-    <button class="nav-btn" onclick="showPage('admin')" id="nav-admin">Кабинет</button>
-  </div>
+  <div class="logo">Лапа<span>Комфорт</span></div>
+  <button class="nav-btn">Контакты</button>
 </nav>
 
-<!-- LANDING -->
-<div id="page-landing" class="page active">
-  <div class="hero">
-    <div class="hero-tag">🐾 Иркутск</div>
-    <h1>Зоотакси<br>для вашего<br><span class="green">питомца</span></h1>
-    <p class="hero-sub">Безопасная перевозка кошек, собак и других животных. Спокойно — для вас и для питомца.</p>
-    <div class="pills">
-      <div class="pill"><span>🕐</span> Выезд от 1 часа</div>
-      <div class="pill"><span>🚗</span> Комфортный авто</div>
-      <div class="pill"><span>✅</span> Опытный водитель</div>
-    </div>
+<div class="hero">
+  <span class="hero-tag">Бережная перевозка</span>
+  <h1>Зоотакси <br><span class="green">Иркутск</span></h1>
+  <p class="hero-sub">Комфортные поездки для ваших питомцев без стресса. Возим на выставки, к ветеринару, за город и по области.</p>
+  
+  <div class="pills">
+    <div class="pill"><span>✓</span> Без намордников</div>
+    <div class="pill"><span>✓</span> Чистый салон</div>
+    <div class="pill"><span>✓</span> Забота 24/7</div>
+  </div>
 
-    <div class="form-wrap" id="form-wrap">
-      <div class="form-title">Оставить заявку</div>
-      <div class="form-sub">Заполните форму — свяжемся в течение 15 минут</div>
+  <!-- БЛОК УСПЕШНОЙ ОТПРАВКИ -->
+  <div class="success-msg" id="successBlock">
+    <div class="icon">🐾</div>
+    <h3>Заявка отправлена!</h3>
+    <p>Менеджер свяжется с вами в ближайшее время для подтверждения поездки.</p>
+  </div>
 
-      <div style="margin-bottom:16px;">
-        <label style="margin-bottom:8px;display:block;">Кто едет</label>
-        <div class="pet-type-row">
-          <button class="pet-btn active" onclick="selectPet(this,'🐱 Кошка')">🐱 Кошка</button>
-          <button class="pet-btn" onclick="selectPet(this,'🐶 Собака')">🐶 Собака</button>
-          <button class="pet-btn" onclick="selectPet(this,'🐾 Другое')">🐾 Другое</button>
-        </div>
+  <!-- ФОРМА ЗАЯВКИ -->
+  <div class="form-wrap" id="formBlock">
+    <div class="form-title">Рассчитать поездку</div>
+    <p class="form-sub">Заполните детали, и мы подберем оптимальный маршрут</p>
+    
+    <form id="taxiForm">
+      <label>Тип питомца</label>
+      <div class="pet-type-row">
+        <button type="button" class="pet-btn active">Собака</button>
+        <button type="button" class="pet-btn">Кошка</button>
+        <button type="button" class="pet-btn">Другой</button>
       </div>
 
       <div class="form-grid">
         <div class="form-group">
-          <label>Ваше имя</label>
-          <input type="text" id="f-name" placeholder="Иван">
+          <label for="name">Ваше имя</label>
+          <input type="text" id="name" name="name" placeholder="Иван" required>
         </div>
         <div class="form-group">
-          <label>Телефон</label>
-          <input type="tel" id="f-phone" placeholder="+7 (999) 000-00-00">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 (999) 000-00-00" required>
         </div>
         <div class="form-group">
-          <label>Откуда</label>
-          <input type="text" id="f-from" placeholder="Адрес или район">
+          <label for="from">Откуда</label>
+          <input type="text" id="from" name="from" placeholder="Улица, дом" required>
         </div>
         <div class="form-group">
-          <label>Куда</label>
-          <input type="text" id="f-to" placeholder="Адрес или район">
+          <label for="to">Куда</label>
+          <input type="text" id="to" name="to" placeholder="Пункт назначения" required>
         </div>
         <div class="form-group">
-          <label>Дата</label>
-          <input type="date" id="f-date">
+          <label for="date">Дата поездки</label>
+          <input type="date" id="date" name="date" required>
         </div>
         <div class="form-group">
-          <label>Время</label>
-          <input type="time" id="f-time" value="10:00">
+          <label for="time">Время</label>
+          <input type="time" id="time" name="time" required>
         </div>
         <div class="form-group full">
-          <label>Комментарий</label>
-          <textarea id="f-comment" placeholder="Порода, размер переноски, особенности..."></textarea>
+          <label for="comment">Комментарий к поездке</label>
+          <textarea id="comment" name="comment" placeholder="Большая собака, нужен гамак, едем с сопровождением..."></textarea>
         </div>
       </div>
 
-      <button class="submit-btn" onclick="submitForm()">Отправить заявку →</button>
-      <div id="form-error" style="display:none;margin-top:12px;padding:12px 16px;background:rgba(224,90,74,0.08);border:1px solid rgba(224,90,74,0.25);border-radius:10px;font-size:13px;color:#e05a4a;">⚠️ Заполните обязательные поля: <span id="form-error-fields"></span></div>
-      <div class="privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</div>
-    </div>
-
-    <div class="success-msg" id="success-msg">
-      <div class="icon">🐾</div>
-      <h3>Заявка принята!</h3>
-      <p>Свяжемся с вами в течение 15 минут.<br>Спасибо, что выбрали ЛапаКомфорт!</p>
-      <br>
-      <button class="submit-btn" style="max-width:200px;margin:0 auto;" onclick="newForm()">Новая заявка</button>
-    </div>
-  </div>
-</div>
-
-<!-- ADMIN LOGIN -->
-<div id="page-admin" class="page">
-  <div class="admin-wrap">
-    <div class="admin-card">
-      <h2>Личный кабинет</h2>
-      <p>Введите пароль для входа</p>
-      <div class="form-group">
-        <label>Пароль</label>
-        <input type="password" id="admin-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
-      </div>
-      <button class="login-btn" onclick="doLogin()">Войти</button>
-      <div class="error-msg" id="login-error">Неверный пароль</div>
-    </div>
-  </div>
-</div>
-
-<!-- CABINET -->
-<div id="page-cabinet" class="page">
-  <div class="cabinet-wrap">
-    <div class="cabinet-header">
-      <h2>Заявки</h2>
-      <button class="logout-btn" onclick="logout()">Выйти</button>
-    </div>
-
-    <div class="stats-row" id="stats-row">
-      <div class="stat-card">
-        <div class="num" id="stat-total">0</div>
-        <div class="lbl">Всего заявок</div>
-      </div>
-      <div class="stat-card">
-        <div class="num" id="stat-new">0</div>
-        <div class="lbl">Новых</div>
-      </div>
-      <div class="stat-card">
-        <div class="num" id="stat-done">0</div>
-        <div class="lbl">Выполнено</div>
-      </div>
-    </div>
-
-    <div class="orders-list" id="orders-list"></div>
+      <button type="submit" class="submit-btn" id="submitBtn">Забронировать поездку</button>
+      <p class="privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+    </form>
   </div>
 </div>
 
 <script>
-// ===== STATE =====
-const ADMIN_PASS = 'lapa2024';
+  // СЮДА ВСТАВЬТЕ ВАШУ ССЫЛКУ, ПОЛУЧЕННУЮ В GOOGLE APPS SCRIPT
+  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzJskD_akbJ_c3-tuG1SDmB-ZkXJ3R7BdhMt0fQ35LwDJIkR2q-tG1jJ8dRFI9XZmgcrA/exec';
 
-// ===== GOOGLE SHEETS =====
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyexRZZVeRThrnmRAQvKxWPND4Wz2e00XJi-K4cfMg59TZWWoYRIv1o6DTyWMZceeXAjw/exec';
-
-async function sendToSheet(order) {
-  try {
-    await fetch(SHEET_URL, {
-      method: 'POST',
-      body: JSON.stringify(order),
-      headers: { 'Content-Type': 'application/json' }
+  // Переключение кнопок выбора питомца
+  let selectedPet = 'Собака';
+  const petButtons = document.querySelectorAll('.pet-btn');
+  petButtons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault(); // Защита от отправки формы при клике на тип питомца
+      petButtons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      selectedPet = this.textContent.trim();
     });
-  } catch(e) { console.error('Sheet error', e); }
-}
-
-async function loadFromSheet() {
-  try {
-    const res = await fetch(SHEET_URL);
-    const data = await res.json();
-    if (!data.ok || !data.rows || data.rows.length < 2) return [];
-    const rows = data.rows.slice(1); // skip header
-    return rows.map((r, i) => ({
-      id: i + 1,
-      created: r[0], name: r[1], phone: r[2], pet: r[3],
-      from: r[4], to: r[5], date: r[6], time: r[7],
-      comment: r[8], status: r[9] === 'Выполнена' ? 'done' : r[9] === 'Отменена' ? 'cancel' : 'new',
-      rowIndex: i + 2
-    })).reverse();
-  } catch(e) { return []; }
-}
-
-// ===== NAVIGATION =====
-let currentPetType = '🐱 Кошка';
-
-function showPage(page) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  if (page === 'admin') {
-    const isLogged = sessionStorage.getItem('lc_logged');
-    if (isLogged) { showCabinet(); return; }
-    document.getElementById('page-admin').classList.add('active');
-  } else {
-    document.getElementById('page-' + page).classList.add('active');
-  }
-}
-
-// ===== PET TYPE =====
-function selectPet(btn, type) {
-  document.querySelectorAll('.pet-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentPetType = type;
-}
-
-// ===== FORM =====
-function submitForm() {
-  const name = document.getElementById('f-name').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  const from = document.getElementById('f-from').value.trim();
-  const to = document.getElementById('f-to').value.trim();
-  const date = document.getElementById('f-date').value;
-  const time = document.getElementById('f-time').value;
-  const comment = document.getElementById('f-comment').value.trim();
-
-  // Validation
-  const fields = [
-    { id: 'f-name', val: name, label: 'имя' },
-    { id: 'f-phone', val: phone, label: 'телефон' },
-    { id: 'f-from', val: from, label: 'откуда' },
-    { id: 'f-to', val: to, label: 'куда' },
-  ];
-  const missing = fields.filter(f => !f.val);
-  fields.forEach(f => {
-    const el = document.getElementById(f.id);
-    el.style.borderColor = f.val ? '' : 'var(--danger)';
-    el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
   });
-  if (missing.length) {
-    const errEl = document.getElementById('form-error');
-    document.getElementById('form-error-fields').textContent = missing.map(f => f.label).join(', ');
-    errEl.style.display = 'block';
-    errEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    return;
-  }
-  document.getElementById('form-error').style.display = 'none';
 
-  const order = {
-    id: Date.now(),
-    name, phone, from, to, date, time, comment,
-    pet: currentPetType,
-    status: 'new',
-    created: new Date().toLocaleString('ru-RU')
-  };
+  // Обработка отправки формы
+  const form = document.getElementById('taxiForm');
+  const formBlock = document.getElementById('formBlock');
+  const successBlock = document.getElementById('successBlock');
+  const submitBtn = document.getElementById('submitBtn');
 
-  const btn = document.querySelector('.submit-btn');
-  btn.textContent = 'Отправляем...';
-  btn.disabled = true;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Запрещаем перезагрузку страницы
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправка...';
 
-  sendToSheet(order).then(() => {
-    btn.textContent = 'Отправить заявку →';
-    btn.disabled = false;
-    document.getElementById('form-wrap').style.display = 'none';
-    document.getElementById('success-msg').style.display = 'block';
-  });
-}
+    // Сбор данных формы
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+    
+    params.append('action', 'add');
+    params.append('created', new Date().toLocaleString("ru-RU"));
+    params.append('pet', selectedPet);
 
-function newForm() {
-  document.getElementById('form-wrap').style.display = 'block';
-  document.getElementById('success-msg').style.display = 'none';
-  ['f-name','f-phone','f-from','f-to','f-date','f-time','f-comment'].forEach(id => {
-    document.getElementById(id).value = '';
-  });
-}
-
-// ===== ADMIN =====
-function doLogin() {
-  const pass = document.getElementById('admin-pass').value;
-  if (pass === ADMIN_PASS) {
-    sessionStorage.setItem('lc_logged', '1');
-    document.getElementById('login-error').style.display = 'none';
-    showCabinet();
-  } else {
-    document.getElementById('login-error').style.display = 'block';
-  }
-}
-
-function logout() {
-  sessionStorage.removeItem('lc_logged');
-  showPage('landing');
-}
-
-function showCabinet() {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-cabinet').classList.add('active');
-  renderOrders();
-}
-
-function renderOrders() {
-  const list = document.getElementById('orders-list');
-  list.innerHTML = `<div class="empty-state"><div class="icon">⏳</div><p>Загружаем заявки...</p></div>`;
-
-  loadFromSheet().then(orders => {
-    document.getElementById('stat-total').textContent = orders.length;
-    document.getElementById('stat-new').textContent = orders.filter(o => o.status === 'new').length;
-    document.getElementById('stat-done').textContent = orders.filter(o => o.status === 'done').length;
-
-    if (orders.length === 0) {
-      list.innerHTML = `<div class="empty-state"><div class="icon">📭</div><p>Заявок пока нет.<br>Они появятся здесь после заполнения формы.</p></div>`;
-      return;
+    for (let [key, value] of formData.entries()) {
+      params.append(key, value);
     }
 
-    list.innerHTML = orders.map(o => `
-      <div class="order-card" id="order-${o.id}">
-        <div class="order-left">
-          <div class="order-name">${o.name} ${o.pet}</div>
-          <div class="order-meta">
-            <span>📞 ${o.phone}</span>
-            <span>📍 ${o.from} → ${o.to}</span>
-            ${o.date ? `<span>📅 ${formatDate(o.date)} ${o.time}</span>` : ''}
-          </div>
-          ${o.comment ? `<div class="order-comment">${o.comment}</div>` : ''}
-        </div>
-        <div class="order-right">
-          <div class="order-time">${o.created}</div>
-          <div>
-            <span class="status-badge status-${o.status}">${statusLabel(o.status)}</span>
-          </div>
-        </div>
-      </div>
-    `).join('');
+    // Безотказный метод отправки запроса в Google Скрипты
+    const img = new Image();
+    img.src = `${WEB_APP_URL}?${params.toString()}`;
+    
+    img.onload = img.onerror = function() {
+      form.reset();
+      formBlock.style.display = 'none';
+      successBlock.style.display = 'block';
+    };
   });
-}
-
-function formatDate(d) {
-  if (!d) return '';
-  const [y,m,day] = d.split('-');
-  return `${day}.${m}.${y}`;
-}
-
-function statusLabel(s) {
-  return { new: '🟢 Новая', done: '✅ Выполнена', cancel: '❌ Отменена' }[s] || s;
-}
-
-// Статусы и удаление управляются напрямую в Google Таблице
 </script>
+
 </body>
 </html>
