@@ -45,7 +45,6 @@
     font-weight: 900;
     font-size: 18px;
     letter-spacing: -0.5px;
-    cursor: pointer;
   }
 
   .logo span { color: var(--accent); }
@@ -63,10 +62,6 @@
   }
 
   .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* SECTIONS / PAGES */
-  .page { display: none; }
-  .page.active { display: block; }
 
   /* HERO */
   .hero {
@@ -253,208 +248,134 @@
   .success-msg .icon { font-size: 48px; margin-bottom: 16px; }
   .success-msg h3 { font-family: 'Unbounded', sans-serif; font-size: 20px; margin-bottom: 8px; }
   .success-msg p { color: var(--muted); }
-
-  /* ADMIN LOGIN */
-  .admin-wrap {
-    max-width: 400px;
-    margin: 80px auto;
-    padding: 0 20px;
-  }
-
-  .admin-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 40px;
-  }
-
-  .admin-card h2 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 20px;
-    margin-bottom: 6px;
-  }
-
-  .admin-card p { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
-
-  .login-btn {
-    width: 100%;
-    background: var(--accent);
-    color: #0e0f0e;
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 6px;
-    transition: background 0.2s;
-  }
-
-  .login-btn:hover { background: var(--accent2); }
-
-  .error-msg {
-    color: var(--danger);
-    font-size: 13px;
-    margin-top: 10px;
-    display: none;
-  }
-
-  /* CABINET */
-  .cabinet-wrap {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
-
-  .cabinet-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-  }
-
-  .cabinet-header h2 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 22px;
-  }
-
-  .logout-btn {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Golos Text', sans-serif;
-    font-size: 13px;
-    transition: all 0.2s;
-  }
-
-  .logout-btn:hover { border-color: var(--danger); color: var(--danger); }
-
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  .stat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 24px;
-  }
-
-  .stat-card .num {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--accent);
-  }
-
-  .stat-card .lbl { font-size: 13px; color: var(--muted); margin-top: 4px; }
-
-  .orders-list { display: flex; flex-direction: column; gap: 12px; }
-
-  .order-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    gap: 12px;
-    animation: slideIn 0.3s ease;
-  }
-
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .order-name {
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 4px;
-  }
-
-  .order-meta {
-    font-size: 13px;
-    color: var(--muted);
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 6px;
-  }
-
-  .order-comment {
-    font-size: 13px;
-    color: var(--text);
-    background: var(--surface);
-    padding: 8px 12px;
-    border-radius: 6px;
-    margin-top: 6px;
-  }
-
-  .status-badge {
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 100px;
-    background: var(--surface);
-    color: var(--accent);
-    border: 1px solid var(--border);
-  }
-
-  footer {
-    text-align: center;
-    padding: 40px;
-    border-top: 1px solid var(--border);
-    margin-top: 8px;
-  }
-
-  .admin-link {
-    color: var(--muted);
-    font-size: 12px;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .admin-link:hover { color: var(--accent); }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo" id="navLogo">Лапа<span>Комфорт</span></div>
+  <div class="logo">Лапа<span>Комфорт</span></div>
   <button class="nav-btn">Контакты</button>
 </nav>
 
-<!-- СТРАНИЦА 1: ГЛАВНАЯ С ФОРМОЙ -->
-<div id="mainPage" class="page active">
-  <div class="hero">
-    <span class="hero-tag">Бережная перевозка</span>
-    <h1>Зоотакси <br><span class="green">Иркутск</span></h1>
-    <p class="hero-sub">Комфортные поездки для ваших питомцев без стресса. Возим на выставки, к ветеринару, за город и по области.</p>
+<div class="hero">
+  <span class="hero-tag">Бережная перевозка</span>
+  <h1>Зоотакси <br><span class="green">Иркутск</span></h1>
+  <p class="hero-sub">Комфортные поездки для ваших питомцев без стресса. Возим на выставки, к ветеринару, за город и по области.</p>
+  
+  <div class="pills">
+    <div class="pill"><span>✓</span> Без намордников</div>
+    <div class="pill"><span>✓</span> Чистый салон</div>
+    <div class="pill"><span>✓</span> Забота 24/7</div>
+  </div>
+
+  <!-- БЛОК УСПЕШНОЙ ОТПРАВКИ -->
+  <div class="success-msg" id="successBlock">
+    <div class="icon">🐾</div>
+    <h3>Заявка отправлена!</h3>
+    <p>Менеджер свяжется с вами в ближайшее время для подтверждения поездки.</p>
+  </div>
+
+  <!-- ФОРМА ЗАЯВКИ -->
+  <div class="form-wrap" id="formBlock">
+    <div class="form-title">Рассчитать поездку</div>
+    <p class="form-sub">Заполните детали, и мы подберем оптимальный маршрут</p>
     
-    <div class="pills">
-      <div class="pill"><span>✓</span> Без намордников</div>
-      <div class="pill"><span>✓</span> Чистый салон</div>
-      <div class="pill"><span>✓</span> Забота 24/7</div>
-    </div>
+    <form id="taxiForm">
+      <label>Тип питомца</label>
+      <div class="pet-type-row">
+        <button type="button" class="pet-btn active">Собака</button>
+        <button type="button" class="pet-btn">Кошка</button>
+        <button type="button" class="pet-btn">Другой</button>
+      </div>
 
-    <!-- БЛОК УСПЕШНОЙ ОТПРАВКИ -->
-    <div class="success-msg" id="successBlock">
-      <div class="icon">🐾</div>
-      <h3>Заявка отправлена!</h3>
-      <p>Менеджер свяжется с вами в ближайшее время для подтверждения поездки.</p>
-    </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="name">Ваше имя</label>
+          <input type="text" id="name" name="name" placeholder="Иван" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 (999) 000-00-00" required>
+        </div>
+        <div class="form-group">
+          <label for="from">Откуда</label>
+          <input type="text" id="from" name="from" placeholder="Улица, дом" required>
+        </div>
+        <div class="form-group">
+          <label for="to">Куда</label>
+          <input type="text" id="to" name="to" placeholder="Пункт назначения" required>
+        </div>
+        <div class="form-group">
+          <label for="date">Дата поездки</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="time">Время</label>
+          <input type="time" id="time" name="time" required>
+        </div>
+        <div class="form-group full">
+          <label for="comment">Комментарий к поездке</label>
+          <textarea id="comment" name="comment" placeholder="Большая собака, нужен гамак, едем с сопровождением..."></textarea>
+        </div>
+      </div>
 
-    <!-- ФОРМА ЗАЯВКИ -->
-    <div class="form-wrap" id="formBlock">
-      <div class="form-title">Рассчитать поездку</div>
-      <p class="form-sub">Заполните детали, и мы подберем оптимальный маршрут</p>
-      
-      <form id="taxiForm">
+      <button type="submit" class="submit-btn" id="submitBtn">Забронировать поездку</button>
+      <p class="privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // СЮДА ВСТАВЬТЕ ВАШУ ССЫЛКУ, ПОЛУЧЕННУЮ В GOOGLE APPS SCRIPT
+  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzJskD_akbJ_c3-tuG1SDmB-ZkXJ3R7BdhMt0fQ35LwDJIkR2q-tG1jJ8dRFI9XZmgcrA/exec';
+
+  // Переключение кнопок выбора питомца
+  let selectedPet = 'Собака';
+  const petButtons = document.querySelectorAll('.pet-btn');
+  petButtons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault(); // Защита от отправки формы при клике на тип питомца
+      petButtons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      selectedPet = this.textContent.trim();
+    });
+  });
+
+  // Обработка отправки формы
+  const form = document.getElementById('taxiForm');
+  const formBlock = document.getElementById('formBlock');
+  const successBlock = document.getElementById('successBlock');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Запрещаем перезагрузку страницы
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправка...';
+
+    // Сбор данных формы
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+    
+    params.append('action', 'add');
+    params.append('created', new Date().toLocaleString("ru-RU"));
+    params.append('pet', selectedPet);
+
+    for (let [key, value] of formData.entries()) {
+      params.append(key, value);
+    }
+
+    // Безотказный метод отправки запроса в Google Скрипты
+    const img = new Image();
+    img.src = `${WEB_APP_URL}?${params.toString()}`;
+    
+    img.onload = img.onerror = function() {
+      form.reset();
+      formBlock.style.display = 'none';
+      successBlock.style.display = 'block';
+    };
+  });
+</script>
+
+</body>
+</html>
